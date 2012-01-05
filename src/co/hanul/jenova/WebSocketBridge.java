@@ -15,6 +15,12 @@ import org.eclipse.jetty.websocket.WebSocketServlet;
 
 import com.google.gson.Gson;
 
+/**
+ * Jenova Jetty8 WebSocket Bridge (included Jenova Engine Alpha-2.0)
+ * 
+ * @author Hanul
+ * @version 1.0
+ */
 public class WebSocketBridge extends WebSocketServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -72,6 +78,13 @@ public class WebSocketBridge extends WebSocketServlet {
 		}
 	}
 
+	/**
+	 * JavaScript 함수를 호출
+	 * 
+	 * @param jsFunctionName
+	 * @param parameters
+	 * @return
+	 */
 	public static Call call(String jsFunctionName, Object... parameters) {
 		return new Call(new Gson().toJson(new Factors(jsFunctionName, parameters)));
 	}
@@ -109,6 +122,11 @@ public class WebSocketBridge extends WebSocketServlet {
 			this.json = json;
 		}
 
+		/**
+		 * 모두에게 전파
+		 * 
+		 * @throws IOException
+		 */
 		public void toAll() throws IOException {
 			for (Map<String, Set<Connection>> namespace : all.values()) {
 				for (Set<Connection> room : namespace.values()) {
@@ -119,6 +137,12 @@ public class WebSocketBridge extends WebSocketServlet {
 			}
 		}
 
+		/**
+		 * 해당 네임스페이스에 있는 모두에게 전파
+		 * 
+		 * @param namespaceName
+		 * @throws IOException
+		 */
 		public void toNamespace(String namespaceName) throws IOException {
 			Map<String, Set<Connection>> namespace = all.get(namespaceName);
 			if (namespace != null) {
@@ -130,6 +154,13 @@ public class WebSocketBridge extends WebSocketServlet {
 			}
 		}
 
+		/**
+		 * 해당 방에 있는 모두에게 전파
+		 * 
+		 * @param namespaceName
+		 * @param roomName
+		 * @throws IOException
+		 */
 		public void toRoom(String namespaceName, Object roomName) throws IOException {
 			Map<String, Set<Connection>> namespace = all.get(namespaceName);
 			if (namespace != null) {
