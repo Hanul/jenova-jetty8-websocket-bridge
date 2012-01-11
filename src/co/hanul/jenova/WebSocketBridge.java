@@ -16,10 +16,10 @@ import org.eclipse.jetty.websocket.WebSocketServlet;
 import com.google.gson.Gson;
 
 /**
- * Jenova Jetty8 WebSocket Bridge (included Jenova Engine Alpha-2.0)
+ * Jenova Jetty8 WebSocket Bridge Server Side (included Jenova Engine Alpha-2.0)
  * 
  * @author Hanul
- * @version 1.0
+ * @version 1.1
  */
 public class WebSocketBridge extends WebSocketServlet {
 	private static final long serialVersionUID = 1L;
