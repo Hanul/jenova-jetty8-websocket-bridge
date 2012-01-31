@@ -6,7 +6,7 @@
  */
 jenova = {
 	websocket : {
-		conncet : function(url, namespaceName, roomName) {
+		connect : function(url, namespaceName, roomName) {
 			// 새 웹 소켓 생성
 			var webSocket = new WebSocket(url + '?namespaceName=' + encodeURIComponent(namespaceName) + '&roomName=' + encodeURIComponent(roomName));
 			webSocket.onmessage = function(event) {
